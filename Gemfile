@@ -9,7 +9,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Use unicorn as the web server
 # gem 'unicorn'
-gem 'devise'
+
 # Deploy with Capistrano
 # gem 'capistrano'
 
@@ -45,4 +45,10 @@ group :test do
   gem 'capybara'
   gem 'launchy'
 end
+gem 'devise'
+   group :test, :development do 
+        gem 'cucumber-rails'   
+        gem 'capybara'
+        gem 'redgreen'
+    end
 
