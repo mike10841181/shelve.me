@@ -33,3 +33,4 @@ Característica: Autenticar usuarios
         Y debería ver "Logout"
         Pero no debería ver "Register"
         Y no debería ver "Login"
+	Y mostrame la página
