@@ -1,29 +1,54 @@
- <!DOCTYPE html>
-    <html>
-    <head>
-      <title>ShelveMe</title>
-      <%= stylesheet_link_tag :all %>
-      <%= javascript_include_tag :defaults %>
-      <%= csrf_meta_tag %>
-    </head>
-    <body>
-      <header>
-      <h1><%=link_to "ShelveMe", root_path%></h1>
-      <nav>
-        <%unless user_signed_in?%>
-            <%=link_to "Login", new_user_session_path%>
-            <%=link_to "Register", new_user_registration_path%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shelve.me</title>
+  <%= stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/warehouse/style", "web-app-theme/override" %>
+  <%= formtastic_stylesheet_link_tag  %>
+  <%=stylesheet_link_tag "highlight"%>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">Shelve.me</a></h1>
+      <div id="user-navigation">
+        <ul class="wat-cf">
+         
+          <%if user_signed_in?%>
+           
+            <li style="color: white;">Logged in as <%=current_user.username%></li>
+            <li><%=link_to "Logout", destroy_user_session_path, :class=>"logout"%></li>
           <%else%>
-            <%=current_user.username%>
-            <%= link_to "Logout", destroy_user_session_path %>
-        <%end%>
-        </nav>
-      </header>
-      <p class="notice"><%= flash[:notice] %></p>
-      <p class="error"><%= flash[:error] %></p>
-      <%= yield %>
+            <li><%=link_to "Login", new_user_session_path%></li>
+            <li><%=link_to "Sign Up", new_user_registration_path %></li>
+          <%end%>  
+        </ul>
+      </div>
+      <div id="main-navigation">
+        <ul class="wat-cf"></ul>
+      </div>
+    </div>    
+    <div id="wrapper" class="wat-cf">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>
+      <div id="main">
+        <%= yield %>
+        <div id="footer">
+          <div class="block">
 
-    </body>
-    </html>
-
-
+          </div>      
+        </div>
+      </div>
+      <div id="sidebar">
+        <%= yield :sidebar %>
+      </div>
+    </div>    
+  </div>
+</body>
+</html>
