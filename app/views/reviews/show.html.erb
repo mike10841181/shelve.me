@@ -1,2 +1,13 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+<div id="main">
+<ul>
+  <h1>LOS Reviews </h1>
+    <li><h1><%=link_to @review.review, '/'%> <h1>
+   added <%=distance_of_time_in_words DateTime.now, @review.created_at  %> ago
+    
+
+
+</p>
+
+</ul>
+</div>
+

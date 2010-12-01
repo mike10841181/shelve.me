@@ -2,9 +2,9 @@ class Review < ActiveRecord::Base
 belongs_to :user
 belongs_to :book
 
-validate_presence_of :review
+#validate_presence_of :review
 
-validate_length_of :review, :maximum => 400
+#validate_length_of :review, :maximum => 400
 
 before_save :default_quality
 
